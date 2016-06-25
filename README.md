@@ -11,37 +11,7 @@
 
 При правилна инсталация речника ще се появи в списъка с налични речници в менюто `Menu > Settings > Device Options > Language and Dictionaries > Dictionaries`.
 
+
 # Как мога сам да генерирам речника от изходната база данни на "Речко"?
 
-1. Изтегляте dump от базата данни на речника от [тук](https://rechnik.chitanka.info/db.sql.gz)
-2. Импортирате в локална mysql база данни
-3. Създавате файл в Stardict формат (`<header>\t<definition>`, вижте bulgarian_dictionary.txt за пример). Аз използвам функцията за експорт на [HeidiSQL](http://www.heidisql.com/), като заявката с коят извличам данните е следната:
-```
-SELECT
-    word.name
-    , IF (
-        word.synonyms IS NOT NULL AND word.synonyms != ''
-        , CONCAT(REPLACE(REPLACE(word.meaning, "\r\n", "<br />"), "\n", "<br />"), "<br />Синоними: ", REPLACE(REPLACE(REPLACE(word.synonyms, "\r\n", ", "), "\n", ", "), "\r", ", "))
-        , REPLACE(REPLACE(word.meaning, "\r\n", "<br />"), "\n", "<br />")
-    ) AS `meaning`
-    , (SELECT
-			GROUP_CONCAT(derivative_form.name SEPARATOR ', ')
-		FROM
-			derivative_form
-		WHERE
-			derivative_form.base_word_id = word.id
-		) AS `inflections`
-FROM
-    word
-WHERE
-    word.meaning IS NOT NULL
-    AND word.meaning != ''
-```
-4. Конвертирате Stardict файла в .opf формат. Използвайте скрипта `convertors/tab2opf.py`. Оригиналният файл е изтеглен от [тук](http://www.klokan.cz/projects/stardict-lingea/tab2opf.py). Версията, която е качена локално изисква Python 2.
-За да конвертирате, използвайте следната команда:
-```
-python tab2opf.py -utf bulgarian_dictionary.txt
-```
-5. Изтеглете програмта [KindlePreview](http://www.amazon.com/gp/feature.html?docId=1000765261).
-6. Отворете .opf файла с KindlePreview, което автоматично ще генерира .mobi файл.
-7. Инсталирайте генерирания .mobi файл според инструкциите.
+@@TODO

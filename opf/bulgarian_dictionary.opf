@@ -10,6 +10,7 @@
 		<dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
 		<!-- Title of the document -->
 		<dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
+        <dc:Creator>Yanosh Kunsh</dc:Creator>
 		<dc:Language>BG</dc:Language>
 	</dc-metadata>
 	<x-metadata>

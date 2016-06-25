@@ -237,20 +237,30 @@ for r in fr.xreadlines():
       <mbp:pagebreak/>
 """)
 
-    dt, dd =  r.split('\t',1)
+    dt, dd, inflections =  r.split('\t', 2)
+    inflectionsList = inflections.split(', ')
+    parsedInflections = ""
+    
+    if len(inflectionsList):
+        parsedInflections += "\n            <idx:infl>\n"
+        for inflectedWord in inflectionsList:
+            inflectedWord = inflectedWord.strip()
+            inflectedWord = normalizeUnicode(inflectedWord,'cp1252') if not UTFINDEX else inflectedWord
+            parsedInflections += "              <idx:iform value=\"" + inflectedWord + "\"/>\n"
+        parsedInflections += "            </idx:infl>\n         "
+    
     if not UTFINDEX:
         dt = normalizeUnicode(dt,'cp1252')
         dd = normalizeUnicode(dd,'cp1252')
-    dtstrip = normalizeUnicode( dt )
     dd = dd.replace("\\\\","\\").replace("\\n","<br/>\n")
     to.write("""      <idx:entry name="word" scriptable="yes">
         <h2>
-          <idx:orth>%s</idx:orth><idx:key key="%s">
+          <idx:orth>%s%s</idx:orth>
         </h2>
         %s
       </idx:entry>
       <mbp:pagebreak/>
-""" % (dt, dtstrip, dd))
+""" % (dt, parsedInflections, dd))
     print dt
     i += 1
 

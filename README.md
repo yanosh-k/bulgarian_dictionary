@@ -21,9 +21,16 @@ SELECT
     word.name
     , IF (
         word.synonyms IS NOT NULL AND word.synonyms != ''
-        , CONCAT(REPLACE(word.meaning, "\n", "<br />"), "<br />Синоними: ", REPLACE(word.synonyms, "\n", ", "))
-        , REPLACE(word.meaning, "\n", "<br />")
-    )
+        , CONCAT(REPLACE(REPLACE(word.meaning, "\r\n", "<br />"), "\n", "<br />"), "<br />Синоними: ", REPLACE(REPLACE(REPLACE(word.synonyms, "\r\n", ", "), "\n", ", "), "\r", ", "))
+        , REPLACE(REPLACE(word.meaning, "\r\n", "<br />"), "\n", "<br />")
+    ) AS `meaning`
+    , (SELECT
+			GROUP_CONCAT(derivative_form.name SEPARATOR ', ')
+		FROM
+			derivative_form
+		WHERE
+			derivative_form.base_word_id = word.id
+		) AS `inflections`
 FROM
     word
 WHERE

@@ -13,10 +13,10 @@
 
 # Screenshots
 
-* При успешна инсаталция речник ще се появи по следния начин в списъка с речници:
+* При успешна инсаталция речника ще се появи по следния начин в списъка с речници:
 ![Успешна инсталация](https://raw.githubusercontent.com/yanosh-k/bulgarian_dictionary/master/screenshots/screen1.png)
 
-* При избиране на дума резлутатите изглежат по следния начин
+* При избиране на дума резлутатите изглежат по следния начин:
 ![Избрана дума](https://raw.githubusercontent.com/yanosh-k/bulgarian_dictionary/master/screenshots/screen3.png)
 ![Избрана дума](https://raw.githubusercontent.com/yanosh-k/bulgarian_dictionary/master/screenshots/screen4.png)
 

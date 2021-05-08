@@ -23,4 +23,8 @@
 
 # Как мога сам да генерирам речника от изходната база данни на "Речко"?
 
-@@TODO
+1. Изтеглете последната версия на базата данни на ["Речко"](https://rechnik.chitanka.info/db.sql.gz).
+2. Импортирайте в локална инстанция на MySQL/MariaDB: `mysql -u user -p -h localhost rechko < db.sql`
+3. Влезте в основната директория на проекта и изпълненте командата `php convertors/tab_generator.php -h localhost -p your_pass -u user -d rechko`. Това ще генерира файла `bulgarian_dictionary.txt`.
+4. Влезте в папка `opf` и изпълнете командата `python ../convertors/tab2opf.py -utf ../bulgarian_dictionary.txt`. Това ще генерира `.ofp` речниците.
+5. Влезте в папката `convertors` и изпълнетете командата `kindlegen.exe ../opf/bulgarian_dictionary.opf -c1 -o bulgarian_dictionary.mobi -verbose`. Това ще съсздаде файла bulgarian_dictionary.mobi в папка opf.

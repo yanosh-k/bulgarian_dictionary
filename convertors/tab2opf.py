@@ -18,6 +18,12 @@
 #
 # Version history:
 # 0.1 (19.7.2007) Initial version
+# 0.2 (25.06.2016) Add option for reading inflections.
+# 0.3 (08.05.2021) Add option for setting the id of each entry.
+# The input file format should be in the format:
+# <header>\t<definition>\t<inflections>
+# The inflections item is a comma serated list of inflected words:
+# great, greatly, greatest
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Library General Public
@@ -35,7 +41,7 @@
 # Boston, MA 02111-1307, USA.
 
 # VERSION
-VERSION = "0.1"
+VERSION = "0.3"
 
 # FILENAME is a first parameter on the commandline now
 
@@ -148,14 +154,15 @@ OPFTEMPLATEHEAD1 = """<?xml version="1.0"?><!DOCTYPE package SYSTEM "oeb1.ent">
 		<dc:Identifier id="uid">%s</dc:Identifier>
 		<!-- Title of the document -->
 		<dc:Title><h2>%s</h2></dc:Title>
-		<dc:Language>EN</dc:Language>
+        <dc:Creator>Yanosh Kunsh</dc:Creator>
+		<dc:Language>BG</dc:Language>
 	</dc-metadata>
 	<x-metadata>
 """
 OPFTEMPLATEHEADNOUTF = """		<output encoding="Windows-1252" flatten-dynamic-dir="yes"/>"""
 OPFTEMPLATEHEAD2 = """
-		<DictionaryInLanguage>en-us</DictionaryInLanguage>
-		<DictionaryOutLanguage>en-us</DictionaryOutLanguage>
+		<DictionaryInLanguage>bg</DictionaryInLanguage>
+		<DictionaryOutLanguage>bg</DictionaryOutLanguage>
 	</x-metadata>
 </metadata>
 
@@ -211,10 +218,11 @@ name = os.path.splitext(os.path.basename(FILENAME))[0]
 
 i = 0
 to = False
+perDoc = 5000
 
 for r in fr.xreadlines():
    
-    if i % 10000 == 0:
+    if i % perDoc == 0:
         if to:
             to.write("""
                 </mbp:frameset>
@@ -222,7 +230,7 @@ for r in fr.xreadlines():
             </html>
             """)
             to.close()
-        to = open("%s%d.html" % (name, i / 10000), 'w')
+        to = open("%s%d.html" % (name, i / perDoc), 'w')
 
         to.write("""<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:idx="www.mobipocket.com" xmlns:mbp="www.mobipocket.com" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -237,30 +245,35 @@ for r in fr.xreadlines():
       <mbp:pagebreak/>
 """)
 
-    dt, dd, inflections =  r.split('\t', 2)
-    inflectionsList = inflections.split(', ')
+    dt, dt_id, dd, inflections =  r.split('\t', 3)
+    trimmedInflections = inflections.rstrip("\n")
     parsedInflections = ""
     
-    if len(inflectionsList):
-        parsedInflections += "\n            <idx:infl>\n"
-        for inflectedWord in inflectionsList:
-            inflectedWord = inflectedWord.strip()
-            inflectedWord = normalizeUnicode(inflectedWord,'cp1252') if not UTFINDEX else inflectedWord
-            parsedInflections += "              <idx:iform value=\"" + inflectedWord + "\"/>\n"
-        parsedInflections += "            </idx:infl>\n         "
+    if len(trimmedInflections):
+        inflectionsList = trimmedInflections.split(', ')
+    
+        if len(inflectionsList):
+            parsedInflections += "\n            <idx:infl>\n"
+            for inflectedWord in inflectionsList:
+                inflectedWord = inflectedWord.strip()
+                inflectedWord = normalizeUnicode(inflectedWord,'cp1252') if not UTFINDEX else inflectedWord
+                if len(inflectedWord):
+                    parsedInflections += "              <idx:iform value=\"" + inflectedWord + "\"/>\n"
+            parsedInflections += "            </idx:infl>\n         "
+    
     
     if not UTFINDEX:
         dt = normalizeUnicode(dt,'cp1252')
         dd = normalizeUnicode(dd,'cp1252')
     dd = dd.replace("\\\\","\\").replace("\\n","<br/>\n")
-    to.write("""      <idx:entry name="word" scriptable="yes">
+    to.write("""      <idx:entry name="word" scriptable="yes" id="%s">
         <h2>
           <idx:orth>%s%s</idx:orth>
         </h2>
         %s
       </idx:entry>
       <mbp:pagebreak/>
-""" % (dt, parsedInflections, dd))
+""" % (dt_id, dt, parsedInflections, dd))
     print dt
     i += 1
 
@@ -278,9 +291,9 @@ to.write(OPFTEMPLATEHEAD1 % (name, name))
 if not UTFINDEX:
     to.write(OPFTEMPLATEHEADNOUTF)
 to.write(OPFTEMPLATEHEAD2)
-for i in range(0,(lineno/10000)+1):
+for i in range(0,(lineno/perDoc)+1):
     to.write(OPFTEMPLATELINE % (i, name, i))
 to.write(OPFTEMPLATEMIDDLE)
-for i in range(0,(lineno/10000)+1):
+for i in range(0,(lineno/perDoc)+1):
     to.write(OPFTEMPLATELINEREF % i)
 to.write(OPFTEMPLATEEND)

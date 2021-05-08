@@ -10,7 +10,7 @@
 		<dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
 		<!-- Title of the document -->
 		<dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
-        <dc:Creator>Yanosh Kunsh</dc:Creator>
+		<dc:Creator>Yanosh Kunsh</dc:Creator>
 		<dc:Language>BG</dc:Language>
 	</dc-metadata>
 	<x-metadata>
@@ -26,6 +26,10 @@
  <item id="dictionary1" href="bulgarian_dictionary1.html" media-type="text/x-oeb1-document"/>
  <item id="dictionary2" href="bulgarian_dictionary2.html" media-type="text/x-oeb1-document"/>
  <item id="dictionary3" href="bulgarian_dictionary3.html" media-type="text/x-oeb1-document"/>
+ <item id="dictionary4" href="bulgarian_dictionary4.html" media-type="text/x-oeb1-document"/>
+ <item id="dictionary5" href="bulgarian_dictionary5.html" media-type="text/x-oeb1-document"/>
+ <item id="dictionary6" href="bulgarian_dictionary6.html" media-type="text/x-oeb1-document"/>
+ <item id="dictionary7" href="bulgarian_dictionary7.html" media-type="text/x-oeb1-document"/>
 </manifest>
 
 
@@ -35,6 +39,10 @@
 	<itemref idref="dictionary1"/>
 	<itemref idref="dictionary2"/>
 	<itemref idref="dictionary3"/>
+	<itemref idref="dictionary4"/>
+	<itemref idref="dictionary5"/>
+	<itemref idref="dictionary6"/>
+	<itemref idref="dictionary7"/>
 </spine>
 
 <tours/>

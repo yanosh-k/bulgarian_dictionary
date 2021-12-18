@@ -1,50 +1,41 @@
-<?xml version="1.0"?><!DOCTYPE package SYSTEM "oeb1.ent">
-
-<!-- the command line instruction 'prcgen dictionary.opf' will produce the dictionary.prc file in the same folder-->
-<!-- the command line instruction 'mobigen dictionary.opf' will produce the dictionary.mobi file in the same folder-->
-
-<package unique-identifier="uid" xmlns:dc="Dublin Core">
-
-<metadata>
+<?xml version="1.0"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="uid">
+  <metadata>
+	<meta name="cover" content="my-cover-image" />
 	<dc-metadata>
 		<dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
-		<!-- Title of the document -->
-		<dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
-		<dc:Creator>Yanosh Kunsh</dc:Creator>
-		<dc:Language>BG</dc:Language>
+		<dc:title>Bulgarian Dictionary</dc:title>
+		<dc:creator opf:role="aut">Yanosh Kunsh</dc:creator>
+		<dc:language>BG</dc:language>
 	</dc-metadata>
-	<x-metadata>
+    <x-metadata>
+      <DictionaryInLanguage>bg</DictionaryInLanguage>
+      <DictionaryOutLanguage>bg</DictionaryOutLanguage>
+      <DefaultLookupIndex>headword</DefaultLookupIndex>
+    </x-metadata>
+  </metadata>
+  
+  <manifest>
+	<item id="cover" href="cover.html" media-type="application/xhtml+xml" />
+			<item id="dictionary0" href="bulgarian_dictionary0.html" media-type="application/xhtml+xml" />
+			<item id="dictionary1" href="bulgarian_dictionary1.html" media-type="application/xhtml+xml" />
+			<item id="dictionary2" href="bulgarian_dictionary2.html" media-type="application/xhtml+xml" />
+			<item id="dictionary3" href="bulgarian_dictionary3.html" media-type="application/xhtml+xml" />
+	  </manifest>
+  
+  <spine>
+	<itemref idref="cover" />
+			<itemref idref="dictionary0" />
+			<itemref idref="dictionary1" />
+			<itemref idref="dictionary2" />
+			<itemref idref="dictionary3" />
+	  </spine>
+  
+  <guide>
+			<reference type="index" title="Search Word" href=""bulgarian_dictionary0.html"/>
+			<reference type="index" title="Search Word" href=""bulgarian_dictionary1.html"/>
+			<reference type="index" title="Search Word" href=""bulgarian_dictionary2.html"/>
+			<reference type="index" title="Search Word" href=""bulgarian_dictionary3.html"/>
+	  </guide>
 
-		<DictionaryInLanguage>bg</DictionaryInLanguage>
-		<DictionaryOutLanguage>bg</DictionaryOutLanguage>
-	</x-metadata>
-</metadata>
-
-<!-- list of all the files needed to produce the .prc file -->
-<manifest>
- <item id="dictionary0" href="bulgarian_dictionary0.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary1" href="bulgarian_dictionary1.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary2" href="bulgarian_dictionary2.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary3" href="bulgarian_dictionary3.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary4" href="bulgarian_dictionary4.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary5" href="bulgarian_dictionary5.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary6" href="bulgarian_dictionary6.html" media-type="text/x-oeb1-document"/>
- <item id="dictionary7" href="bulgarian_dictionary7.html" media-type="text/x-oeb1-document"/>
-</manifest>
-
-
-<!-- list of the html files in the correct order  -->
-<spine>
-	<itemref idref="dictionary0"/>
-	<itemref idref="dictionary1"/>
-	<itemref idref="dictionary2"/>
-	<itemref idref="dictionary3"/>
-	<itemref idref="dictionary4"/>
-	<itemref idref="dictionary5"/>
-	<itemref idref="dictionary6"/>
-	<itemref idref="dictionary7"/>
-</spine>
-
-<tours/>
-<guide> <reference type="search" title="Dictionary Search" onclick= "index_search()"/> </guide>
 </package>

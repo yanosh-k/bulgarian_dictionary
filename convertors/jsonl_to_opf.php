@@ -13,7 +13,7 @@
 	
 	
 	// Define the number of words a single HTML would contain
-	$wordsPerHtml = 10000;
+	$wordsPerHtml = 5000;
 	$wordsCounter = 1;
 	$htmlsCounter = 0;
 	

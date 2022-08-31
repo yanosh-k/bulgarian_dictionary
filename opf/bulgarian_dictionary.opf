@@ -1,15 +1,15 @@
-<?xml version="1.0"?><!DOCTYPE package SYSTEM "oeb1.ent">
+﻿<?xml version="1.0"?><!DOCTYPE package SYSTEM "oeb1.ent">
 <package unique-identifier="uid" xmlns:dc="Dublin Core">
     <metadata>
         <dc-metadata>
             <dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
             <dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
             <dc:Creator>Yanosh Kunsh</dc:Creator>
-            <dc:Language>ru</dc:Language>
+            <dc:Language>bg</dc:Language>
         </dc-metadata>
         <x-metadata>
-            <DictionaryInLanguage>ru</DictionaryInLanguage>
-            <DictionaryOutLanguage>ru</DictionaryOutLanguage>
+            <DictionaryInLanguage>bg</DictionaryInLanguage>
+            <DictionaryOutLanguage>bg</DictionaryOutLanguage>
         </x-metadata>
     </metadata>
 

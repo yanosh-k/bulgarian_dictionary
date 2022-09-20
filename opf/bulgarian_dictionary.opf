@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a5f522253d3bd905353ace1b09b40f3020b9787223e73d5de82f985e41e302f1
-size 2241
+﻿<?xml version="1.0"?><!DOCTYPE package SYSTEM "oeb1.ent">
+<package unique-identifier="uid" xmlns:dc="Dublin Core">
+    <metadata>
+        <dc-metadata>
+            <dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
+            <dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
+            <dc:Creator>Yanosh Kunsh</dc:Creator>
+            <dc:Language>bg</dc:Language>
+        </dc-metadata>
+        <x-metadata>
+            <DictionaryInLanguage>bg</DictionaryInLanguage>
+            <DictionaryOutLanguage>bg</DictionaryOutLanguage>
+        </x-metadata>
+    </metadata>
+
+    <manifest>
+        <item id="cover" href="cover.html" media-type="application/xhtml+xml" />
+                    <item id="dictionary0" href="bulgarian_dictionary0.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary1" href="bulgarian_dictionary1.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary2" href="bulgarian_dictionary2.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary3" href="bulgarian_dictionary3.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary4" href="bulgarian_dictionary4.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary5" href="bulgarian_dictionary5.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary6" href="bulgarian_dictionary6.html" media-type="text/x-oeb1-document" />
+                    <item id="dictionary7" href="bulgarian_dictionary7.html" media-type="text/x-oeb1-document" />
+            </manifest>
+
+    <spine>
+        <itemref idref="cover" />
+                    <itemref idref="dictionary0" />
+                    <itemref idref="dictionary1" />
+                    <itemref idref="dictionary2" />
+                    <itemref idref="dictionary3" />
+                    <itemref idref="dictionary4" />
+                    <itemref idref="dictionary5" />
+                    <itemref idref="dictionary6" />
+                    <itemref idref="dictionary7" />
+            </spine>
+
+    <tours />
+
+    <guide>
+        <reference type="search" title="Dictionary Search" onclick="index_search()"/>
+    </guide>
+</package>

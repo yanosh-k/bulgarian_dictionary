@@ -5,11 +5,11 @@
             <dc:Identifier id="uid">bulgarian_dictionary</dc:Identifier>
             <dc:Title><h2>Bulgarian Dictionary</h2></dc:Title>
             <dc:Creator>Yanosh Kunsh</dc:Creator>
-            <dc:Language>bg</dc:Language>
+            <dc:Language>ru</dc:Language>
         </dc-metadata>
         <x-metadata>
-            <DictionaryInLanguage>bg</DictionaryInLanguage>
-            <DictionaryOutLanguage>bg</DictionaryOutLanguage>
+            <DictionaryInLanguage>ru</DictionaryInLanguage>
+            <DictionaryOutLanguage>ru</DictionaryOutLanguage>
         </x-metadata>
     </metadata>
 

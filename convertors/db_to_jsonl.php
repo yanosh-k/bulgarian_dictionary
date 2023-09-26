@@ -24,14 +24,19 @@
 	`word`.`id`,
 	`word`.`name`,
 	`word`.`meaning`,
-	GROUP_CONCAT(DISTINCT `derivative_form`.`name` ORDER BY derivative_form.`name` ASC SEPARATOR ' @AND@ ') AS `derivative_forms`
-FROM
-	`word`
-LEFT JOIN `derivative_form` ON `derivative_form`.`base_word_id` = `word`.`id`
-WHERE
-	`word`.`meaning` IS NOT NULL
-GROUP BY `word`.`id`
-ORDER BY `word`.`name` ASC, `word`.`id` ASC
+	GROUP_CONCAT(DISTINCT `df`.`name` ORDER BY df.`name` ASC SEPARATOR ' @AND@ ') AS `derivative_forms`
+	FROM
+		`word`
+		LEFT JOIN (
+			SELECT *
+			FROM `derivative_form`
+			WHERE INSTR(`derivative_form`.`name`,' ') = 0
+		) `df`
+		ON `df`.`base_word_id` = `word`.`id`
+	WHERE
+		`word`.`meaning` IS NOT NULL
+	GROUP BY `word`.`id`
+	ORDER BY `word`.`name` ASC, `word`.`id` ASC
 ";
 	
 	

@@ -15,7 +15,7 @@
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		echo "# Connected to database successfully\n";
 	} catch(PDOException $e) {
-		echo "# Connection to dtabase failed: " . $e->getMessage() . "\n";
+		echo "# Connection to database failed: " . $e->getMessage() . "\n";
 	}
 	
 	
@@ -36,6 +36,8 @@ ORDER BY `word`.`name` ASC, `word`.`id` ASC
 	
 	
 	// Load words data
+	ini_set('memory_limit', '512M');
+	$conn->query("SET SESSION group_concat_max_len = 1000000;");
 	$wordsRes = $conn->query($wordsSql, PDO::FETCH_ASSOC);
 	$words = $wordsRes->fetchAll();
 	

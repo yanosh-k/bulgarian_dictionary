@@ -2,7 +2,7 @@
 
 Български тълковен речник в .mobi формат подходящ за Kindle устройства. Речника е съставен на основата, на базата данни, на ["Речко"](https://rechnik.chitanka.info/about).
 
-# Инсталация
+# Първоначална инсталация
 
 1. Вържете вашия Kindle към компютъра, чрез USB кабел.
 2. Отворете папката `documents`, която се намира на устройството.
@@ -11,6 +11,18 @@
 5. Изберете речника като речник по подразбиране, от настройките на вашия Kindle.
 
 При правилна инсталация речника ще се появи в списъка с налични речници в менюто `Menu > Settings > Device Options > Language and Dictionaries > Dictionaries`.
+
+# Повторно инсталиране
+
+Методът за първоначална инсталация може да не сработи при някои устройства, когато качвате нова версия на речника. За да избегнете проблеми при обновяване, моля следвайте следните стъпки:
+
+1. Вържете вашия Kindle към компютъра, чрез USB кабел.
+2. Отворете папката `documents`, която се намира на устройството.
+3. Изтрийте папката `bulgarian_dictionary.sdr`, която се намира там, както и файла `bulgarian_dictionary.mobi`.
+4. Разкачете устройството от компютъра.
+5. Проверете, че маркирането на думи, при четене, не дава възможност за избор, на Bulgarain Dictionary, като възможен речник.
+6. Следвайте стъпките от секция "Първоначална инсталация".
+
 
 # Screenshots
 
@@ -21,6 +33,9 @@
 ![Избрана дума](https://raw.githubusercontent.com/yanosh-k/bulgarian_dictionary/master/screenshots/screen3.png)
 ![Избрана дума](https://raw.githubusercontent.com/yanosh-k/bulgarian_dictionary/master/screenshots/screen4.png)
 
+# Contributors
+
+* ["dannywinrow"](https://github.com/dannywinrow) - Fixed the limit on MySQL's `GROUP_CONCAT` function using `group_concat_max_len`. Updated SQL to removed words containing spaces in the `derivative_form`, as those are not used in word matching.
 
 # Как мога сам да генерирам речника от изходната база данни на "Речко"?
 

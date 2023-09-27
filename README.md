@@ -35,7 +35,7 @@
 
 # Contributors
 
-* ["dannywinrow"](https://github.com/dannywinrow) - Fixed the limit on MySQL's `GROUP_CONCAT` function using `group_concat_max_len`. Updated SQL to removed words containing spaces in the `derivative_form`, as those are not used in word matching.
+* ["dannywinrow"](https://github.com/dannywinrow) - Fixed the limit on MySQL's `GROUP_CONCAT` function using `group_concat_max_len`. Updated SQL to remove words containing spaces in the `derivative_form`, as those are not used in word matching.
 
 # Как мога сам да генерирам речника от изходната база данни на "Речко"?
 
